@@ -107,7 +107,7 @@ document.querySelectorAll('.project-btn').forEach((button) => {
     const projectElement = e.currentTarget.parentNode;
     const projectInfo = projects.filter(
       (project) => project.id === projectElement.id,
-    )[0];
+    )[1];
 
     modalName.textContent = projectInfo.name;
     modalDescription.textContent = projectInfo.description;
@@ -148,8 +148,8 @@ document.getElementById('contact-form').addEventListener('submit', (e) => {
 preserve form data
 */
 window.addEventListener('load', () => {
-  formData = JSON.parse(localStorage.getItem('formData'));
-  if (localStorage.getItem('formData') != null) {
+  formData = JSON.parse(localStorage.getItem('formDataObj'));
+  if (localStorage.getItem('formDataObj') != null) {
     document.querySelectorAll('[required]').forEach((formElement) => {
       formElement.value = formData[formElement.id];
     });
@@ -158,5 +158,5 @@ window.addEventListener('load', () => {
 
 document.getElementById('contact-form').addEventListener('keyup', (e) => {
   formData[e.target.id] = e.target.value;
-  localStorage.setItem('formData', JSON.stringify(formData));
+  localStorage.setItem('formDataObj', JSON.stringify(formData));
 });
